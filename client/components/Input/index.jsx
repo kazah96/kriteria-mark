@@ -6,21 +6,32 @@ import style from "./style";
 
 class Input extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
     placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
   };
 
   static defaultProps = {
-    placeholder: `text`,
-    className: ``,
+    placeholder: "text",
+    className: "",
+    onSubmit: () => {},
+    onChange: () => {},
   };
 
   constructor() {
     super();
     this.state = {
-      value: ``,
+      value: "",
     };
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        this.props.onSubmit(this.state.value);
+      }
+    });
   }
 
   onChange = event => {

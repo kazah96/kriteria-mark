@@ -1,40 +1,72 @@
+.pageWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+}
+
+.pageScroller {
+  width: 100%;
+  /* margin: auto;
+    margin-top: 50px;
+    height: 700px; */
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+
+}
+
 .app {
-    width: 95vw;
-    min-width: 500px;
-    min-height: 100vh;
-    margin: 0 auto;
-    background: antiquewhite url("/images/as.jpg") ;
-    border-top-width: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin-bottom: 50px;
-    font-weight: 80;  
+  margin: 0px;
+  width: 100%;
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 
-      background-color:rgba(77, 99, 132, 1);
+  background-color: rgba(77, 99, 132, 1);
 }
 .content {
-    display: flex;
-    min-height: 500px;
+  display: flex;
+  min-height: 500px;
 }
 
-.leftPanel{
-    width: 220px;
-    border-right: 2px solid #f6f6f6;
+.leftPanel {
+  width: 220px;
+  border-right: 2px solid #f6f6f6;
 }
 
 .header {
-
 }
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 .connectBtn {
-    background: rebeccapurple;
+  background: rebeccapurple;
+}
+
+.enter {
+  transform: translate(100%);
+}
+
+.enterActive {
+  transform: translate(0%);
+  transition: transform 500ms ease-in-out;
+}
+
+.leave {
+  transform: translate(0%);
+}
+
+.leaveActive {
+  transform: translate(-100%);
+  transition: transform 500ms ease-in-out;
 }
