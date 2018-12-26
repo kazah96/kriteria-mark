@@ -69,12 +69,14 @@ export default class Blurable extends React.Component {
   scrollTo = id => {
     const { blurredRefId, refs } = this.state;
 
-    if (id === blurredRefId) return;
-    
-    const elOffset = refs[id].getBoundingClientRect().top;
+    if (id === blurredRefId ) return;
+
+    const elOffset = refs[id].offsetTop;
+
+    console.log({ blurredRefId, getRect: refs[id] });
 
     window.scrollTo({
-      top: elOffset,
+      top: elOffset-70,
       behavior: "smooth",
     });
   };
@@ -94,7 +96,8 @@ export default class Blurable extends React.Component {
               key={id}
               ref={elem => this.addRef(id, elem)}
               className={cn({
-                [style.blur]: blurredRefId ? blurredRefId !== id : id !== "0", [style.item]: true
+                [style.blur]: blurredRefId ? blurredRefId !== id : id !== "0",
+                [style.item]: true,
               })}
             >
               {child}
