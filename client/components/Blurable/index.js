@@ -53,7 +53,7 @@ export default class Blurable extends React.Component {
         window.innerHeight || 0,
       );
 
-      const yOffset = 100;
+      const yOffset = 120;
       if (h / 3 - yOffset < bounds.y + bounds.height && h / 3 > bounds.y) {
         return ref;
       }
@@ -69,14 +69,12 @@ export default class Blurable extends React.Component {
   scrollTo = id => {
     const { blurredRefId, refs } = this.state;
 
-    if (id === blurredRefId ) return;
+    if (id === blurredRefId || (blurredRefId === undefined && id === "0")) return;
 
     const elOffset = refs[id].offsetTop;
 
-    console.log({ blurredRefId, getRect: refs[id] });
-
     window.scrollTo({
-      top: elOffset-70,
+      top: elOffset-120,
       behavior: "smooth",
     });
   };
