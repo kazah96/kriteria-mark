@@ -9,9 +9,15 @@
 
   box-sizing: border-box;
 
-  background: antiquewhite;
 
   border: 0;
 
   margin-bottom: 8px;
+  background: #e6e6e6;
+}
+
+.buttonEnabled {
+  background: antiquewhite;
+
+  cursor: pointer;
 }

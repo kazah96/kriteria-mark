@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDataGrid from "react-data-grid";
 import style from "./style";
+import cn from "classnames";
 
 class Example extends React.Component {
   constructor(props) {
@@ -53,6 +54,13 @@ class Example extends React.Component {
     return cols;
   };
 
+  canAddRow = () => {
+    const { criteria } = this.props;
+    if (Object.keys(criteria).length === 0) return false;
+
+    return true;
+  };
+
   addEmptyRow = () => {
     const emptyRow = this.generateEmptyRow();
     this.setState(prevState => ({
@@ -73,7 +81,13 @@ class Example extends React.Component {
   render() {
     return (
       <div className={style.table}>
-        <button className={style.button} onClick={this.addEmptyRow}>
+        <button
+          disabled={!this.canAddRow()}
+          className={cn(style.button, {
+            [style.buttonEnabled]: this.canAddRow(),
+          })}
+          onClick={this.addEmptyRow}
+        >
           Добавить запись
         </button>
         <ReactDataGrid

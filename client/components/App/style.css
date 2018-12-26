@@ -17,40 +17,65 @@
 .header {
   height: 80px;
   width: 100%;
+
   background: #d3d3d3;
 }
 
 .footer {
   position: absolute;
+
   margin-top: auto;
+
   height: calc(50vh);
+
   width: 100%;
+
   background: #d3d3d3;
+
+  text-align: center;
+
+  padding-top: 15px;
+
+  font-size: 12px;
+
+  color: #6c6c6c;
 }
 
 .beginAgain {
   padding-top: 18px;
 
   padding-bottom: 18px;
-  
+
   text-align: center;
-  
-  background: #e49b9b;
-  
-  border-radius: 20px 2p;
-  
+
+  background: #fbdddd;
+
   box-sizing: border-box;
-  
+
   border-radius: 64px;
-  
+
   font-size: 17px;
-  
+
   margin-top: 150px;
+
+  opacity: 15%;
+
+  filter: opacity(43%);
+
+  cursor: pointer;
+
+  width: 200px;
+
+  margin: auto;
+}
+
+.beginAgain:hover {
+  filter: opacity(83%);
 }
 
 .headerLogo {
   box-sizing: border-box;
-  background: #cb3837;
+  background: #4b94d2;
   width: 100%;
   font-size: 18px;
   color: #fff;
@@ -76,7 +101,7 @@ h4 {
 
 .helper {
   font-size: 13px;
-  color: rgb(146, 146, 146);
+  color: rgb(46, 46, 46);
 }
 
 * {
@@ -106,9 +131,6 @@ body {
 .leftPanel {
   width: 220px;
   border-right: 2px solid #f6f6f6;
-}
-
-.header {
 }
 
 .connectBtn {

@@ -31,8 +31,6 @@ class App extends React.Component {
   beginAgain = () => {
     const { clearAll } = this.props;
 
-    clearAll();
-
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -43,7 +41,9 @@ class App extends React.Component {
     return (
       <div className={style.app}>
         <div className={style.header}>
-          <div className={style.headerLogo}>Header Logo</div>
+          <div className={style.headerLogo}>
+            Оценка методом аддитивной свертки критериев
+          </div>
         </div>
         <div className={style.pageWrapper}>
           <Blurable offsetY={this.state.offsetY}>
@@ -100,11 +100,11 @@ class App extends React.Component {
               </div>
             </div>
             <div onClick={this.beginAgain} className={style.beginAgain}>
-              Начать заново
+              Наверх
             </div>
           </Blurable>
         </div>
-        <div className={style.footer} />
+        <div className={style.footer}>2018 Декабрь</div>
       </div>
     );
   }

@@ -1,5 +1,9 @@
 .blur {
-  filter: opacity(15%);
+  filter: opacity(15%) ;
   transition: all ease 0.3s;
+}
+
+.item {
+  transition: all ease 0.5s;
 }
 

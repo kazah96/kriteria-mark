@@ -94,7 +94,7 @@ export default class Blurable extends React.Component {
               key={id}
               ref={elem => this.addRef(id, elem)}
               className={cn({
-                [style.blur]: blurredRefId ? blurredRefId !== id : id !== "0",
+                [style.blur]: blurredRefId ? blurredRefId !== id : id !== "0", [style.item]: true
               })}
             >
               {child}

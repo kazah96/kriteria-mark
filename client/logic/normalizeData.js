@@ -15,11 +15,11 @@ const valuesMatrixSchema = array().of(
 );
 
 export default function normalizeMatrix(valuesMatrix) {
-  if(valuesMatrix.length === 0) return null;
+  if (valuesMatrix.length === 0) return null;
 
   if (!valuesMatrixSchema.validateSync(valuesMatrix))
     throw new Error("valuesMatrixSchema is not valid");
-  
+
   const criteries = valuesMatrix[0].values.map(item => item.criterion);
 
   const criteriaMinMaxTable = criteries.reduce((prev, crit) => {
@@ -42,10 +42,11 @@ export default function normalizeMatrix(valuesMatrix) {
     values: item.values.map(criteria => {
       const crit = criteriaMinMaxTable[criteria.criterion];
 
-      const value = criteria.max
-        ? (criteria.value - crit.min) / (crit.max - crit.min)
-        : (crit.max - criteria.value) / (crit.max - crit.min);
-      
+      const value =
+        criteria.max !== true
+          ? (criteria.value - crit.min) / (crit.max - crit.min)
+          : (crit.max - criteria.value) / (crit.max - crit.min);
+
       return {
         ...criteria,
         value: value || 0,

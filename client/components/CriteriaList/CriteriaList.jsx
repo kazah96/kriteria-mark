@@ -54,7 +54,9 @@ class CriteriaList extends Component {
     const { onItemsChange } = this.props;
     const { items } = this.state;
 
-    
+    if (prevProps.items !== this.props.items && prevState.items === items) {
+      console.log(prevState, items);
+    }
 
     if (prevState.items !== items) {
       onItemsChange(items);
@@ -97,6 +99,8 @@ class CriteriaList extends Component {
       items: [...items, { content, id: shortid.generate() }],
     });
   };
+
+  
 
   render() {
     return (
