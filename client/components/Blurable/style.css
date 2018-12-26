@@ -1,0 +1,5 @@
+.blur {
+  filter: opacity(15%);
+  transition: all ease 0.3s;
+}
+

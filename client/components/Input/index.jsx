@@ -27,12 +27,16 @@ class Input extends PureComponent {
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", event => {
-      if (event.key === "Enter") {
-        this.props.onSubmit(this.state.value);
-      }
-    });
   }
+
+  onKeyDown = event => {
+    const { onSubmit } = this.props;
+    const { value } = this.state;
+
+    if (event.key === "Enter") {
+      onSubmit(value);
+    }
+  };
 
   onChange = event => {
     const {
@@ -53,6 +57,7 @@ class Input extends PureComponent {
         className={cn({ [style.input]: true, [className]: true })}
         value={value}
         onChange={event => this.onChange(event)}
+        onKeyDown={this.onKeyDown}
         placeholder={placeholder}
       />
     );

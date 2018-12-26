@@ -1,3 +1,14 @@
 .container {
+}
 
+.deleteButton {
+  margin-left: auto;
+
+  background: none;
+
+  border: 0;
+
+  font-weight: bold;
+
+  cursor: pointer;
 }

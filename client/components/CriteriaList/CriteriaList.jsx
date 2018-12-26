@@ -2,6 +2,7 @@ import style from "./style";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Input from "components/Input";
+import Button from "components/Button";
 import shortid from "shortid";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -15,24 +16,26 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
+const grid = 6;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: "none",
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
+  display: "flex",
+  background: "aliceblue",
 
   // change background colour if dragging
-  background: isDragging ? "lightgreen" : "grey",
+  // background: isDragging ? "lightgreen" : "grey",
 
   // styles we need to apply on draggables
   ...draggableStyle,
 });
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
+  //  background: isDraggingOver ? "lightblue" : "lightgrey",
+  padding: 2,
   width: 250,
 });
 
@@ -50,6 +53,8 @@ class CriteriaList extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { onItemsChange } = this.props;
     const { items } = this.state;
+
+    
 
     if (prevState.items !== items) {
       onItemsChange(items);
@@ -77,7 +82,6 @@ class CriteriaList extends Component {
     this.setState({
       items,
     });
-
   }
 
   remove = id => {
@@ -92,7 +96,6 @@ class CriteriaList extends Component {
     this.setState({
       items: [...items, { content, id: shortid.generate() }],
     });
-
   };
 
   render() {
@@ -117,13 +120,22 @@ class CriteriaList extends Component {
                       )}
                     >
                       {item.content}
-                      <button onClick={() => this.remove(item.id)}>X</button>
+
+                      <button
+                        className={style.deleteButton}
+                        onClick={() => this.remove(item.id)}
+                      >
+                        X
+                      </button>
                     </div>
                   )}
                 </Draggable>
               ))}
               {provided.placeholder}
-              <Input onSubmit={this.onInputSubmit} />
+              <Input
+                placeholder="Введите критерий"
+                onSubmit={this.onInputSubmit}
+              />
             </div>
           )}
         </Droppable>

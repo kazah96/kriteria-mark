@@ -1,48 +1,38 @@
+import React from "react";
+import cn from "classnames";
 import style from "./style";
-import React, { Component } from "react";
-import normalize from "../../logic/normalizeData";
-import calculateMark from "../../logic/calculateMark";
-import ReactDataGrid from "react-data-grid";
 
-class Result extends Component {
-  constructor() {
-    super();
-    this.state = {
-      rows: [],
-      columns: [],
-    };
-  }
+const colors = ["#81d394", "#9dc97f", "#bbc97f", "#c99a7f", "#c9817f"];
 
-  submit = () => {
-    const { items, criterionArray } = this.props;
-    const normalizedItems = normalize(items);
+const generateStyle = ({ mark }) => {
+  const color = colors[Math.trunc((1 - mark) * (colors.length - 1))];
+  console.log(mark);
 
-    const w = normalizedItems.map(item => ({
-      name: item.itemName,
-      mark: calculateMark({
-        normalizedData: item.values,
-        criterionArray: Object.keys(criterionArray).map(crit => ({
-          name: crit,
-          weight: criterionArray[crit],
-        })),
-      }),
-    }));
-
-    this.makeRowsColumns(w);
+  return {
+    backgroundColor: color,
   };
+};
 
-  render() {
-    return (
-      <div className={style.container}>
-        <button onClick={this.submit}>submit</button>
-        <ReactDataGrid
-          columns={this.generateColumns()}
-          rowGetter={i => this.state.rows[i]}
-          rowsCount={this.state.rows.length}
-        />
+const Result = React.memo(({ items }) => (
+  <div className={style.container}>
+    <div className={style.header}>
+      <div className={style.flex}>
+        <div className={style.name}>Название</div>
+        <div className={style.mark}>Оценка</div>
       </div>
-    );
-  }
-}
+    </div>
+    {items.map(item => (
+      <div
+        className={cn(style.bar, style.flex)}
+        style={generateStyle({ mark: item.mark })}
+        key={item.name}
+      >
+        <div className={style.name}>{item.name}</div>
+        <div className={style.mark}>{item.mark}</div>
+      </div>
+    ))}
+    {items.length > 0 && <p className={style.helper}>Наилучшим вариантом является {items[0].name}</p>}
+  </div>
+));
 
 export default Result;

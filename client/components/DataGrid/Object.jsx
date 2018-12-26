@@ -9,7 +9,10 @@ class Example extends React.Component {
       props.items.length > 0
         ? props.items.map(item => ({
             name: item.itemName,
-            ...item.values.reduce((p, c) => ({...p, [c.criterion]: c.value }), {}),
+            ...item.values.reduce(
+              (p, c) => ({ ...p, [c.criterion]: c.value }),
+              {},
+            ),
           }))
         : [];
 
@@ -39,7 +42,7 @@ class Example extends React.Component {
     const { criteria } = this.props;
 
     const cols = [
-      { key: "name", name: "name", editable: true },
+      { key: "name", name: "Название", editable: true },
       ...Object.keys(criteria).map(item => ({
         key: item,
         name: item,
@@ -70,7 +73,9 @@ class Example extends React.Component {
   render() {
     return (
       <div className={style.table}>
-        <button onClick={this.addEmptyRow}>AddRow</button>
+        <button className={style.button} onClick={this.addEmptyRow}>
+          Добавить запись
+        </button>
         <ReactDataGrid
           columns={this.generateColumns()}
           rowGetter={i => this.state.rows[i]}

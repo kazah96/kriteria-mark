@@ -1,6 +1,17 @@
 .container {
-
 }
 .table {
-  width: 500px
+  width: 700px;
+}
+
+.button {
+  padding: 9px;
+
+  box-sizing: border-box;
+
+  background: antiquewhite;
+
+  border: 0;
+
+  margin-bottom: 8px;
 }

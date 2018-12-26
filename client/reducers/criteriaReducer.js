@@ -6,6 +6,7 @@ const criteriaReducer = handleActions(
     [criteriaActions.setCriteria]: (state, action) => ({
       ...action.payload.criteria,
     }),
+    [criteriaActions.clear]: () => ({}),
   },
   {},
 );
@@ -13,6 +14,7 @@ const criteriaReducer = handleActions(
 const itemReducer = handleActions(
   {
     [itemActions.addItems]: (state, action) => [...action.payload.items],
+    [itemActions.clear]: () => [],
   },
   [],
 );

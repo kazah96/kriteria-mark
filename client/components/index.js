@@ -6,6 +6,8 @@ import CriteriaList from "components/CriteriaList";
 import DataMatrix from "components/DataMatrix";
 import DataGrid from "components/DataGrid";
 import Result from "components/Result";
+import Blurable from "components/Blurable";
+import Normalized from "components/Normalized";
 
 export {
   App,
@@ -16,4 +18,6 @@ export {
   DataMatrix,
   DataGrid,
   Result,
+  Blurable,
+  Normalized,
 };

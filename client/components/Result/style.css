@@ -1,3 +1,32 @@
-.container {
+.bar {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 23.3px;
+  box-sizing: border-box;
+}
 
+.header {
+  font-size: 16px;
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+
+}
+
+.mark {
+  flex-grow: 2;
+}
+
+.name {
+  flex-grow: 1;
+  width: 160px;
+}
+
+.helper {
+  font-size: 13px;
+  color: rgb(146, 146, 146);
 }

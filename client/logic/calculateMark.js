@@ -19,6 +19,7 @@ const criterionArraySchema = array().of(
 );
 
 export default function calculateMark({ normalizedData, criterionArray }) {
+  if(normalizedData.length === 0) return null;
   if (!normalizedDataSchema.validateSync(normalizedData))
     throw new Error("normalizedDataSchema is not valid");
 
